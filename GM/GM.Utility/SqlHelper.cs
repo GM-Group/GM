@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GM.Utility
 {
-    public static class UserHelper
+    public static class SqlHelper
     {
         private object lockObj = new object();
         private DateTime tempDate = DateTime.MinValue;
