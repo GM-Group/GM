@@ -9,11 +9,11 @@ namespace GM.Utility
     public class SqlHelper
     {
         private static object lockObj = new object();
-        private static const int MaxCaskNumber = 2000;
+        private const int MaxCaskNumber = 2000;
 
         public static string GenerateUserID(string ip = "127.0.0.1")
         {
-            long tempId;
+            long tempId = 0;
             DateTime tempDate = DateTime.MinValue;
             const string userIdFormat = "{4}{2,6:yyMMdd}{3,5:00000}{1,3:000}-{5}";
             var appId = -1;
@@ -65,6 +65,6 @@ namespace GM.Utility
             return id;
         }
 
-         
+
     }
 }
