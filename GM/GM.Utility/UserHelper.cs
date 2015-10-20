@@ -64,5 +64,7 @@ namespace GM.Utility
             var id = string.Format(userIdFormat, null, appId, now, ticks, "US", cask);
             return id;
         }
+
+         
     }
 }
