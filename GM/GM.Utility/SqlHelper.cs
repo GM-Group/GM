@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace GM.Utility
 {
-    public static class SqlHelper
+    public class SqlHelper
     {
-        private object lockObj = new object();
-        private DateTime tempDate = DateTime.MinValue;
-        private long tempId;
-        private const int MaxCaskNumber = 2000;
+        private static object lockObj = new object();
+        private static const int MaxCaskNumber = 2000;
 
-        public string GenerateUserID(string ip = "127.0.0.1")
+        public static string GenerateUserID(string ip = "127.0.0.1")
         {
+            long tempId;
+            DateTime tempDate = DateTime.MinValue;
             const string userIdFormat = "{4}{2,6:yyMMdd}{3,5:00000}{1,3:000}-{5}";
             var appId = -1;
 
@@ -41,23 +41,23 @@ namespace GM.Utility
             }
             var now = DateTime.Now;
             var ticks = (long)DateTime.Now.TimeOfDay.TotalSeconds;
-            lock (this.lockObj)
+            lock (lockObj)
             {
-                if (now.Date != this.tempDate.Date)
+                if (now.Date != tempDate.Date)
                 {
-                    this.tempId = ticks;
-                    this.tempDate = now;
+                    tempId = ticks;
+                    tempDate = now;
                 }
-                if (ticks <= this.tempId)
+                if (ticks <= tempId)
                 {
-                    this.tempId++;
+                    tempId++;
                 }
                 else
                 {
-                    this.tempId = ticks;
-                    this.tempDate = now;
+                    tempId = ticks;
+                    tempDate = now;
                 }
-                ticks = this.tempId;
+                ticks = tempId;
             }
             var ts = DateTime.Now - new DateTime(2006, 7, 4);
             var cask = Convert.ToString((int)Math.Abs(ts.Days % MaxCaskNumber), 16).PadLeft(4, '0').ToUpper();
