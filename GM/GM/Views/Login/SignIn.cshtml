@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<h2>SignIn</h2>
+<div>
+    <p>LoginName：@ViewBag.LoginName</p>
+    <p> Login:<input type="text" id="username" /></p>
+    <p>  Passport:<input type="password" id="passport" /></p>
+    <p> <input type="button" id="btnSubmit" value="登录"/></p>
+</div>
+
+<script>
+    $("#btnSubmit").click(function () {
+        $.ajax({
+            type: "post",
+            url: "../Login/Login",
+            data: "",
+            dataType: "json",
+            success: function () {
+
+            },
+            error: function () { }
+        });
+    });
+
+</script>
+
