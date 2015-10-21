@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using GM.BLL;
+using GM.Utility;
 
 namespace GM.Controllers
 {
@@ -52,6 +54,11 @@ namespace GM.Controllers
 
         public ActionResult Register()
         {
+            string loginName =  RequestHelper.GetString("LoginName", MethodType.Post);
+            string password = RequestHelper.GetString("PassWord", MethodType.Post);
+            bool registerResult = new LoginBusiness().Register(loginName,password);
+           //return Json(new { success = false, data = result, info = "执行失败" }, JsonRequestBehavior.AllowGet);
+
             return View();
         }
     }

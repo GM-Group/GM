@@ -7,23 +7,14 @@
 
 <h2>Register</h2>
 
-<form>
+<form method="post">
     <p> 登录名：<input type="text" size="20" id="LoginName" maxlength="20" name="LoginName" /></p>
     <p> 密码：<input type="password" size="20" id="PassWord" maxlength="20" name="PassWord" /></p>
-    <p><input type="button" id="btnResister" name="btnResister" value="注册" /></p>    
+    <p><input type="button" id="btnResister" name="btnResister" value="注册" /></p>
 </form>
 
 <script>
-    $("#btnResister").click(function () {
-        $.ajax({
-            type: "post",
-            url: "../Login/Register",
-            data: "",
-            dataType: "json",
-            success: function () {
-
-            },
-            error: function () { }
-        });
+    $("#btnResister").click(function () {      
+        document.forms[0].submit();
     });
 </script>

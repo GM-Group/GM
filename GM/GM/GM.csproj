@@ -214,6 +214,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GM.BLL\GM.BLL.csproj">
+      <Project>{dc81c331-dd6f-4b92-b088-79334253b49b}</Project>
+      <Name>GM.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GM.Utility\GM.Utility.csproj">
+      <Project>{ebe9ad46-ffe0-4466-8517-17e03a37e79a}</Project>
+      <Name>GM.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
